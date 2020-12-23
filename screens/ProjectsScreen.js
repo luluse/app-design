@@ -29,7 +29,8 @@ class ProjectsScreen extends React.Component {
     translateY: new Animated.Value(44),
     thirdScale: new Animated.Value(0.8),
     thirdTranslateY: new Animated.Value(-50),
-    index: 0
+    index: 0,
+    opacity: new Animated.Value(0)
   };
 
   componentWillMount() {
@@ -49,9 +50,13 @@ class ProjectsScreen extends React.Component {
       onPanResponderGrant: () => {
         Animated.spring(this.state.scale, { toValue: 1 }).start();
         Animated.spring(this.state.translateY, { toValue: 0 }).start();
+
         Animated.spring(this.state.thirdScale, { toValue: 0.9 }).start();
         Animated.spring(this.state.thirdTranslateY, { toValue: 44 }).start();
+
+        Animated.timing(this.state.opacity, { toValue: 1 }).start();
       },
+
       onPanResponderMove: Animated.event([
         null,
         { dx: this.state.pan.x, dy: this.state.pan.y }
@@ -60,6 +65,8 @@ class ProjectsScreen extends React.Component {
       onPanResponderRelease: () => {
         const positionY = this.state.pan.y.__getValue();
         console.log(positionY);
+
+        Animated.timing(this.state.opacity, { toValue: 0 }).start();
 
         if (positionY > 200) {
           Animated.timing(this.state.pan, {
@@ -90,6 +97,7 @@ class ProjectsScreen extends React.Component {
   render() {
     return (
       <Container>
+        <AnimatedMask style={{ opacity: this.state.opacity }} />
         <Animated.View style={{
           transform: [
             { translateX: this.state.pan.x },
@@ -163,13 +171,25 @@ const Container = styled.View`
 
 const Text = styled.Text``;
 
+const Mask = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: -3;
+`;
+
+const AnimatedMask = Animated.createAnimatedComponent(Mask);
+
 const projects = [
   {
     title: "Design project",
     image: require("../assets/background5.jpg"),
     author: "Lulu",
     text:
-      "Thanks to Design+Code, I improved my design skill and learned to do animations for my app"
+      "Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app"
   },
   {
     title: "The CLI",

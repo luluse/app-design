@@ -34,7 +34,8 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "styled-components": "^5.2.1",
-    "yarn": "^1.22.10"
+    "yarn": "^1.22.10",
+    "expo-linear-gradient": "~8.3.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
