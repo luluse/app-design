@@ -78,7 +78,7 @@ class Project extends React.Component {
           <AnimatedText style={{ height: this.state.textHeight }}>
             {this.props.text}
           </AnimatedText>
-          <AnimatedLinearGradient
+          {/* <AnimatedLinearGradient
             colors={["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 1)"]}
             style={{
               position: "absolute",
@@ -86,7 +86,7 @@ class Project extends React.Component {
               width: "100%",
               height: this.state.textHeight
             }}
-          />
+          /> */}
           <TouchableOpacity
             onPress={this.closeCard}
             style={{
@@ -107,7 +107,7 @@ class Project extends React.Component {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Project);
 
-const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
+// const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 const Container = styled.View`
   width: 315px;
