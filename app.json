@@ -3,12 +3,12 @@
     "name": "app-design",
     "slug": "app-design",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f0f3f5"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

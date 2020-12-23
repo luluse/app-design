@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 class ProjectsScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    headerShown: false
   };
   render() {
     return (
