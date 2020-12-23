@@ -2,6 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Project from "../components/Projects";
 import { PanResponder, Animated } from "react-native";
+import { connect } from "react-redux";
+
+function mapStateToProps(state) {
+  return {
+    action: state.action
+  };
+}
 
 function getNextIndex(index) {
   var nextIndex = index + 1;
@@ -27,7 +34,17 @@ class ProjectsScreen extends React.Component {
 
   componentWillMount() {
     this._panResponder = PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: (evt, gestureState) => {
+        if (gestureState.dx === 0 && gestureState.dy === 0) {
+          return false;
+        } else {
+          if (this.props.action == "openCard") {
+            return false;
+          } else {
+            return true;
+          }
+        }
+      },
 
       onPanResponderGrant: () => {
         Animated.spring(this.state.scale, { toValue: 1 }).start();
@@ -85,6 +102,7 @@ class ProjectsScreen extends React.Component {
             image={projects[this.state.index].image}
             author={projects[this.state.index].author}
             text={projects[this.state.index].text}
+            canOpen={true}
           />
         </Animated.View>
         <Animated.View
@@ -134,7 +152,7 @@ class ProjectsScreen extends React.Component {
   }
 }
 
-export default ProjectsScreen;
+export default connect(mapStateToProps)(ProjectsScreen);
 
 const Container = styled.View`
   flex: 1;
