@@ -5,7 +5,7 @@ import { Dimensions, Animated } from "react-native";
 
 let screenHeight = Dimensions.get("window").height;
 
-class Success extends React.Component {
+class Loading extends React.Component {
 
   state = {
     top: new Animated.Value(0),
@@ -22,6 +22,7 @@ class Success extends React.Component {
       Animated.timing(this.state.opacity, { toValue: 1 }).start();
   
       this.animation.play();
+
     } else {
       Animated.timing(this.state.top, { toValue: screenHeight, duration: 0 }).start();
       Animated.timing(this.state.opacity, { toValue: 0 }).start();
@@ -36,9 +37,9 @@ class Success extends React.Component {
         style={{ top: this.state.top, opacity: this.state.opacity }}
       >
         <LottieView
-          source={require("../assets/lottie-checked-done.json")}
+          source={require("../assets/lottie-loading-fluid.json")}
           autoPlay={false}
-          loop={false}
+          loop={true}
           ref={animation => {
             this.animation = animation;
           }}
@@ -48,7 +49,7 @@ class Success extends React.Component {
   }
 }
 
-export default Success;
+export default Loading;
 
 const Container = styled.View`
   width: 100%;
