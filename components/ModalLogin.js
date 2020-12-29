@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { BlurView } from 'expo-blur';
+import Success from './Success';
 
 class ModalLogin extends React.Component {
 
@@ -38,11 +39,11 @@ class ModalLogin extends React.Component {
     return (
       <Container>
         <TouchableWithoutFeedback onPress={this.tapBackground}>
-        <BlurView
-          tint="default"
-          intensity={100}
-          style={{ position: "absolute", width: "100%", height: "100%" }}
-        />
+          <BlurView
+            tint="default"
+            intensity={100}
+            style={{ position: "absolute", width: "100%", height: "100%" }}
+          />
         </TouchableWithoutFeedback>
         <Modal>
           <Logo source={require("../assets/logo-dc.png")} />
@@ -67,6 +68,7 @@ class ModalLogin extends React.Component {
             </ButtonView>
           </TouchableOpacity>
         </Modal>
+        <Success />
       </Container>
     );
   }
