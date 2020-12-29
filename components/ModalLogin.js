@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import { BlurView } from 'expo-blur';
 import Success from './Success';
 import Loading from './Loading';
@@ -27,6 +27,8 @@ class ModalLogin extends React.Component {
       // Stop loading and show success
       this.setState({ isLoading: false });
       this.setState({ isSuccessful: true });
+      
+      Alert.alert("Congrats", "You've logged in successfuly!");
     }, 2000);
   };
 
