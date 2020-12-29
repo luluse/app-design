@@ -1,9 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert, Dimensions, Animated } from 'react-native';
 import { BlurView } from 'expo-blur';
 import Success from './Success';
 import Loading from './Loading';
+import { connect } from "react-redux";
+
+const screenHeight = Dimensions.get("window").height;
+
+function mapStateToProps(state) {
+  return { action: state.action };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    closeLogin: () =>
+      dispatch({
+        type: "CLOSE_LOGIN"
+      })
+  };
+}
 
 class ModalLogin extends React.Component {
 
@@ -13,8 +29,25 @@ class ModalLogin extends React.Component {
     iconEmail: require("../assets/icon-email.png"),
     iconPassword: require("../assets/icon-password.png"),
     isSuccessful: false,
-    isLoading: false
+    isLoading: false,
+    top: new Animated.Value(screenHeight)
   };
+
+  componentDidUpdate() {
+    if (this.props.action == "openLogin") {
+      Animated.timing(this.state.top, {
+        toValue: 0,
+        duration: 0
+      }).start();
+    }
+    if (this.props.action == "closeLogin") {
+      Animated.timing(this.state.top, {
+        toValue: screenHeight,
+        duration: 0
+      }).start();
+    }
+  }
+
 
   handleLogin = () => {
     console.log(this.state.email, this.state.password);
@@ -27,7 +60,7 @@ class ModalLogin extends React.Component {
       // Stop loading and show success
       this.setState({ isLoading: false });
       this.setState({ isSuccessful: true });
-      
+
       Alert.alert("Congrats", "You've logged in successfuly!");
     }, 2000);
   };
@@ -52,7 +85,7 @@ class ModalLogin extends React.Component {
 
   render() {
     return (
-      <Container>
+      <AnimatedContainer style={{ top: this.state.top }}>
         <TouchableWithoutFeedback onPress={this.tapBackground}>
           <BlurView
             tint="default"
@@ -85,12 +118,12 @@ class ModalLogin extends React.Component {
         </Modal>
         {/* <Success isActive={this.state.isSuccessful} /> */}
         {/* <Loading isActive={this.state.isLoading} /> */}
-      </Container>
+      </AnimatedContainer>
     );
   }
 }
 
-export default ModalLogin;
+export default connect( mapStateToProps, mapDispatchToProps )(ModalLogin);
 
 const Container = styled.View`
   position: absolute;
@@ -102,6 +135,8 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
 const Modal = styled.View`
   width: 335px;
