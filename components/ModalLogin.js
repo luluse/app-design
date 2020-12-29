@@ -1,18 +1,71 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { BlurView } from 'expo-blur';
 
 class ModalLogin extends React.Component {
+
+  state = {
+    email: "",
+    password: "",
+    iconEmail: require("../assets/icon-email.png"),
+    iconPassword: require("../assets/icon-password.png")
+  };
+
+  handleLogin = () => {
+    console.log(this.state.email, this.state.password);
+  };
+
+  focusEmail = () => {
+    this.setState({
+      iconEmail: require("../assets/icon-email-animated.gif"),
+      iconPassword: require("../assets/icon-password.png")
+    });
+  };
+
+  focusPassword = () => {
+    this.setState({
+      iconEmail: require("../assets/icon-email.png"),
+      iconPassword: require("../assets/icon-password-animated.gif")
+    });
+  };
+
+  tapBackground = () => {
+    Keyboard.dismiss();
+  };
+
   render() {
     return (
       <Container>
+        <TouchableWithoutFeedback onPress={this.tapBackground}>
+        <BlurView
+          tint="default"
+          intensity={100}
+          style={{ position: "absolute", width: "100%", height: "100%" }}
+        />
+        </TouchableWithoutFeedback>
         <Modal>
           <Logo source={require("../assets/logo-dc.png")} />
           <Text>Log in to access content</Text>
-          <TextInput />
-          <TextInput />
-          <ButtonView>
-            <ButtonText>Log in</ButtonText>
-          </ButtonView>
+          <TextInput
+            onChangeText={email => this.setState({ email })}
+            placeholder="Email"
+            keyboardType="email-address"
+            value={this.state.email}
+            onFocus={this.focusEmail} />
+          <TextInput
+            onChangeText={password => this.setState({ password })}
+            placeholder="Password"
+            secureTextEntry={true}
+            value={this.state.password}
+            onFocus={this.focusPassword} />
+          <IconEmail source={this.state.iconEmail} />
+          <IconPassword source={this.state.iconPassword} />
+          <TouchableOpacity onPress={this.handleLogin}>
+            <ButtonView>
+              <ButtonText>Log in</ButtonText>
+            </ButtonView>
+          </TouchableOpacity>
         </Modal>
       </Container>
     );
@@ -66,6 +119,22 @@ const TextInput = styled.TextInput`
   color: #3c4560;
   padding-left: 44px;
   margin-top: 20px;
+`;
+
+const IconEmail = styled.Image`
+  width: 24px;
+  height: 16px;
+  position: absolute;
+  top: 179px;
+  left: 31px;
+`;
+
+const IconPassword = styled.Image`
+  width: 18px;
+  height: 24px;
+  position: absolute;
+  top: 239px;
+  left: 35px;
 `;
 
 const ButtonView = styled.View`
