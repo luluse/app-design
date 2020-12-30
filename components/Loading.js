@@ -18,7 +18,7 @@ class Loading extends React.Component {
 
   componentDidUpdate(){
     if (this.props.isActive) {
-      Animated.timing(this.state.top, { toValue: 0, duration: 0 }).start();
+      Animated.timing(this.state.top, { toValue: 0, duration: 0}).start();
       Animated.timing(this.state.opacity, { toValue: 1 }).start();
   
       this.animation.play();

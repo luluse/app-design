@@ -24,7 +24,7 @@ class Success extends React.Component {
       this.animation.play();
     } else {
       Animated.timing(this.state.top, { toValue: screenHeight, duration: 0 }).start();
-      Animated.timing(this.state.opacity, { toValue: 0 }).start();
+      Animated.timing(this.state.opacity, { toValue: 0  }).start();
   
       this.animation.loop = false;
     }

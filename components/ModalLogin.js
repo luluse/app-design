@@ -30,20 +30,36 @@ class ModalLogin extends React.Component {
     iconPassword: require("../assets/icon-password.png"),
     isSuccessful: false,
     isLoading: false,
-    top: new Animated.Value(screenHeight)
+    top: new Animated.Value(screenHeight),
+    // top: 0,
+    scale: new Animated.Value(1.3),
+    translateY: new Animated.Value(0)
   };
 
   componentDidUpdate() {
     if (this.props.action == "openLogin") {
       Animated.timing(this.state.top, {
         toValue: 0,
+        duration: 0,
+      }).start();
+      Animated.spring(this.state.scale, { toValue: 1 }).start();
+      Animated.timing(this.state.translateY, {
+        toValue: 0,
         duration: 0
       }).start();
     }
     if (this.props.action == "closeLogin") {
-      Animated.timing(this.state.top, {
-        toValue: screenHeight,
-        duration: 0
+      setTimeout(() => {
+        Animated.timing(this.state.top, {
+          toValue: screenHeight,
+          duration: 0,
+        }).start();
+        Animated.spring(this.state.scale, { toValue: 1.3 }).start();
+      }, 500)
+
+      Animated.timing(this.state.translateY, {
+        toValue: 1000,
+        duration: 500
       }).start();
     }
   }
@@ -62,6 +78,11 @@ class ModalLogin extends React.Component {
       this.setState({ isSuccessful: true });
 
       Alert.alert("Congrats", "You've logged in successfuly!");
+
+      setTimeout(() => {
+        this.props.closeLogin();
+        this.setState({ isSuccessful: false });
+      }, 1000);
     }, 2000);
   };
 
@@ -81,6 +102,7 @@ class ModalLogin extends React.Component {
 
   tapBackground = () => {
     Keyboard.dismiss();
+    this.props.closeLogin();
   };
 
   render() {
@@ -93,7 +115,13 @@ class ModalLogin extends React.Component {
             style={{ position: "absolute", width: "100%", height: "100%" }}
           />
         </TouchableWithoutFeedback>
-        <Modal>
+        <AnimatedModal
+          style={{
+            transform: [
+              { scale: this.state.scale },
+              { translateY: this.state.translateY }
+            ]
+          }}>
           <Logo source={require("../assets/logo-dc.png")} />
           <Text>Log in to access content</Text>
           <TextInput
@@ -115,15 +143,15 @@ class ModalLogin extends React.Component {
               <ButtonText>Log in</ButtonText>
             </ButtonView>
           </TouchableOpacity>
-        </Modal>
-        {/* <Success isActive={this.state.isSuccessful} /> */}
-        {/* <Loading isActive={this.state.isLoading} /> */}
+        </AnimatedModal>
+        <Success isActive={this.state.isSuccessful} />
+        <Loading isActive={this.state.isLoading} />
       </AnimatedContainer>
     );
   }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )(ModalLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalLogin);
 
 const Container = styled.View`
   position: absolute;
@@ -146,6 +174,8 @@ const Modal = styled.View`
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   align-items: center;
 `;
+
+const AnimatedModal = Animated.createAnimatedComponent(Modal);
 
 const Logo = styled.Image`
   width: 44px;

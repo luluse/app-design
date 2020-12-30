@@ -121,7 +121,7 @@ class HomeScreen extends React.Component {
           <SafeAreaView>
             <ScrollView style={{ height: '100%' }}>
               <TitleBar>
-                <TouchableOpacity onPress={this.props.openLogin} style={{ position: 'absolute', top: 0, left: 20 }}>
+                <TouchableOpacity onPress={this.props.openLogin} style={{ position: 'absolute', left: 20 }}>
                   <Avatar source={require('../assets/avatar-default.jpg')} />
                 </TouchableOpacity>
                 <Title>Welcome to React native</Title>
