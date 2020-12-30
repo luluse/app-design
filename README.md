@@ -7,3 +7,4 @@ React Native App using the following libraries
 - Redux
 - Apollo
 - Contentful
+- LottieFiles designs
