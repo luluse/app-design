@@ -5,6 +5,7 @@ import { BlurView } from 'expo-blur';
 import Success from './Success';
 import Loading from './Loading';
 import { connect } from "react-redux";
+import firebase from "./Firebase";
 
 const screenHeight = Dimensions.get("window").height;
 
@@ -72,18 +73,42 @@ class ModalLogin extends React.Component {
     this.setState({ isLoading: true });
 
     // Simulate API Call
-    setTimeout(() => {
-      // Stop loading and show success
-      this.setState({ isLoading: false });
-      this.setState({ isSuccessful: true });
+    // setTimeout(() => {
+    //   // Stop loading and show success
+    //   this.setState({ isLoading: false });
+    //   this.setState({ isSuccessful: true });
 
-      Alert.alert("Congrats", "You've logged in successfuly!");
+    //   Alert.alert("Congrats", "You've logged in successfuly!");
 
-      setTimeout(() => {
-        this.props.closeLogin();
-        this.setState({ isSuccessful: false });
-      }, 1000);
-    }, 2000);
+    //   setTimeout(() => {
+    //     this.props.closeLogin();
+    //     this.setState({ isSuccessful: false });
+    //   }, 1000);
+    // }, 2000);
+
+    const email = this.state.email
+    const password = this.state.password
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        Alert.alert("Error", error.message);
+      })
+      .then(response =>{
+        console.log(response);
+        this.setState({ isLoading: false });
+
+        if (response){
+          this.setState({ isSuccessful: true });
+          setTimeout(() => {
+            Alert.alert("Congrats", "You've logged in successfuly!");
+            Keyboard.dismiss();
+            this.props.closeLogin();
+            this.setState({ isSuccessful: false });
+          }, 1000);
+        }
+      })
   };
 
   focusEmail = () => {
