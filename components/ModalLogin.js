@@ -6,6 +6,8 @@ import Success from './Success';
 import Loading from './Loading';
 import { connect } from "react-redux";
 import firebase from "./Firebase";
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
+
 
 const screenHeight = Dimensions.get("window").height;
 
@@ -37,6 +39,10 @@ class ModalLogin extends React.Component {
     translateY: new Animated.Value(0)
   };
 
+  componentDidMount() {
+    this.retrieveName();
+  }
+
   componentDidUpdate() {
     if (this.props.action == "openLogin") {
       Animated.timing(this.state.top, {
@@ -65,9 +71,23 @@ class ModalLogin extends React.Component {
     }
   }
 
+  storeName = async name => {
+    try {
+      await AsyncStorage.setItem("name", name);
+    } catch (error) { }
+  };
+
+  retrieveName = async () => {
+    try {
+      const name = await AsyncStorage.getItem("name");
+      if (name !== null) {
+        console.log(name);
+      }
+    } catch (error) {}
+  };
 
   handleLogin = () => {
-    console.log(this.state.email, this.state.password);
+    // console.log(this.state.email, this.state.password);
 
     // Start loading
     this.setState({ isLoading: true });
@@ -96,11 +116,14 @@ class ModalLogin extends React.Component {
         Alert.alert("Error", error.message);
       })
       .then(response =>{
-        console.log(response);
+        // console.log(response);
         this.setState({ isLoading: false });
 
         if (response){
           this.setState({ isSuccessful: true });
+
+          this.storeName(response.user.email);
+
           setTimeout(() => {
             Alert.alert("Congrats", "You've logged in successfuly!");
             Keyboard.dismiss();

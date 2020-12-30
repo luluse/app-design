@@ -8,3 +8,4 @@ React Native App using the following libraries
 - Apollo
 - Contentful
 - LottieFiles designs
+- Firebase Authentication
