@@ -20,6 +20,11 @@ function mapDispatchToProps(dispatch) {
     closeLogin: () =>
       dispatch({
         type: "CLOSE_LOGIN"
+      }),
+    updateName: (name) =>
+      dispatch({
+        type: "UPDATE_NAME",
+        name
       })
   };
 }
@@ -82,6 +87,7 @@ class ModalLogin extends React.Component {
       const name = await AsyncStorage.getItem("name");
       if (name !== null) {
         console.log(name);
+        this.props.updateName(name);
       }
     } catch (error) {}
   };
@@ -122,10 +128,12 @@ class ModalLogin extends React.Component {
         if (response){
           this.setState({ isSuccessful: true });
 
-          this.storeName(response.user.email);
+          Alert.alert("Congrats", "You've logged in successfuly!");
 
+          this.storeName(response.user.email);
+          this.props.updateName(response.user.email);
+          
           setTimeout(() => {
-            Alert.alert("Congrats", "You've logged in successfuly!");
             Keyboard.dismiss();
             this.props.closeLogin();
             this.setState({ isSuccessful: false });

@@ -4,6 +4,7 @@ import { Animated, TouchableOpacity, Dimensions } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import MenuItem from './MenuItems';
 import { connect } from 'react-redux';
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
 
 let screenWidth = Dimensions.get("window").width;
 var cardWidth = screenWidth;
@@ -20,7 +21,13 @@ function mapDispatchToProps(dispatch) {
     closeMenu: () =>
       dispatch({
         type: 'CLOSE_MENU'
+      }),
+    updateName: name =>
+      dispatch({
+        type: "UPDATE_NAME",
+        name
       })
+
   };
 }
 
@@ -34,21 +41,29 @@ class Menu extends React.Component {
   componentDidMount() {
     this.toggleMenu();
   }
-  
-  componentDidUpdate(){
+
+  componentDidUpdate() {
     this.toggleMenu();
   }
 
   toggleMenu = () => {
-    if (this.props.action === 'openMenu'){
+    if (this.props.action === 'openMenu') {
       Animated.spring(this.state.top, {
         toValue: 54
       }).start();
     }
-    if(this.props.action === 'closeMenu'){
+    if (this.props.action === 'closeMenu') {
       Animated.spring(this.state.top, {
         toValue: screenHeight
       }).start();
+    }
+  };
+
+  handleMenu = index => {
+    if (index === 3) {
+      this.props.closeMenu();
+      this.props.updateName();
+      AsyncStorage.clear();
     }
   };
 
@@ -67,12 +82,18 @@ class Menu extends React.Component {
         </TouchableOpacity>
         <Content>
           {items.map((item, index) => (
-            <MenuItem
+            <TouchableOpacity
               key={index}
-              icon={item.icon}
-              title={item.title}
-              text={item.text}
-            />
+              onPress={() => {
+                this.handleMenu(index);
+              }}>
+              <MenuItem
+
+                icon={item.icon}
+                title={item.title}
+                text={item.text}
+              />
+            </TouchableOpacity>
           ))}
         </Content>
       </AnimatedContainer>
