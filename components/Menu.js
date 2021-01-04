@@ -4,7 +4,7 @@ import { Animated, TouchableOpacity, Dimensions } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import MenuItem from './MenuItems';
 import { connect } from 'react-redux';
-import { AsyncStorage } from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 let screenWidth = Dimensions.get("window").width;
 var cardWidth = screenWidth;
@@ -24,7 +24,7 @@ function mapDispatchToProps(dispatch) {
       }),
     updateName: name =>
       dispatch({
-        type: "UPDATE_NAME",
+        type: 'UPDATE_NAME',
         name
       })
 

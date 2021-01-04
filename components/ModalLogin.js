@@ -6,8 +6,8 @@ import Success from './Success';
 import Loading from './Loading';
 import { connect } from "react-redux";
 import firebase from "./Firebase";
-import { AsyncStorage } from "@react-native-async-storage/async-storage";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { saveState } from "./AsyncStorage";
 
 const screenHeight = Dimensions.get("window").height;
 
@@ -129,7 +129,8 @@ class ModalLogin extends React.Component {
 
           Alert.alert("Congrats", "You've logged in successfuly!");
 
-          this.storeName(response.user.email);
+          // this.storeName(response.user.email);
+          this.fetchUser()
           this.props.updateName(response.user.email);
           
           setTimeout(() => {
@@ -139,6 +140,20 @@ class ModalLogin extends React.Component {
           }, 1000);
         }
       })
+  };
+
+  fetchUser = () => {
+    fetch("https://uifaces.co/api?limit=1&random", {
+      headers: new Headers({
+        "X-API-KEY": "eeaafbe81657073cd70ac6e3de1bd6"
+      })
+    })
+      .then(response => response.json())
+      .then(response => {
+        const name = response[0].name;
+        const avatar = response[0].photo;
+        saveState({ name, avatar });
+      });
   };
 
   focusEmail = () => {
