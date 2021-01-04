@@ -3,7 +3,7 @@ import { ScrollView, SafeAreaView, TouchableOpacity, Animated, Easing, StatusBar
 import styled from 'styled-components';
 import Card from '../components/Card';
 import Course from '../components/Course';
-// import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { NotificationIcon } from '../components/Icons';
 import Logo from '../components/Logo';
 import Menu from '../components/Menu';
@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ModalLogin from '../components/ModalLogin';
-
+import Avatar from '../components/Avatar';
 
 const CardsQuery = gql`
       {
@@ -49,6 +49,7 @@ const CardsQuery = gql`
 
 function mapStateToProps(state) {
   return { action: state.action };
+  return { action: state.action, name: state.name };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -59,7 +60,7 @@ function mapDispatchToProps(dispatch) {
       }),
     openLogin: () =>
       dispatch({
-        type: "OPEN_LOGIN"
+        type: 'OPEN_LOGIN'
       })
   };
 }
@@ -112,6 +113,14 @@ class HomeScreen extends React.Component {
     }
   };
 
+  handleAvatar = () => {
+    if (this.props.name) {
+      this.props.openMenu();
+    } else {
+      this.props.openLogin();
+    }
+  };
+
   render() {
 
     return (
@@ -121,11 +130,12 @@ class HomeScreen extends React.Component {
           <SafeAreaView>
             <ScrollView style={{ height: '100%' }}>
               <TitleBar>
-                <TouchableOpacity onPress={this.props.openLogin} style={{ position: 'absolute', left: 20 }}>
-                  <Avatar source={require('../assets/avatar-default.jpg')} />
+                <TouchableOpacity onPress={this.handleAvatar} style={{ position: 'absolute', left: 20 }}>
+                  {/* <Avatar source={require('../assets/avatar-default.jpg')} /> */}
+                  <Avatar />
                 </TouchableOpacity>
                 <Title>Welcome to React native</Title>
-                <Name>Lulu</Name>
+                <Name>{this.props.name}</Name>
                 <NotificationIcon style={{ position: "absolute", right: 20, top: 5 }} />
 
               </TitleBar>
@@ -234,12 +244,12 @@ margin-top: 50px;
 padding-left: 80px; 
 `;
 
-const Avatar = styled.Image`
-width: 44px;
-height: 44px;
-background: black;
-border-radius: 22px;
-`;
+// const Avatar = styled.Image`
+// width: 44px;
+// height: 44px;
+// background: black;
+// border-radius: 22px;
+// `;
 
 const Message = styled.Text`
 margin: 20px;

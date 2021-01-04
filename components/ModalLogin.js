@@ -5,6 +5,9 @@ import { BlurView } from 'expo-blur';
 import Success from './Success';
 import Loading from './Loading';
 import { connect } from "react-redux";
+import firebase from "./Firebase";
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
+
 
 const screenHeight = Dimensions.get("window").height;
 
@@ -17,6 +20,11 @@ function mapDispatchToProps(dispatch) {
     closeLogin: () =>
       dispatch({
         type: "CLOSE_LOGIN"
+      }),
+    updateName: (name) =>
+      dispatch({
+        type: "UPDATE_NAME",
+        name
       })
   };
 }
@@ -31,10 +39,13 @@ class ModalLogin extends React.Component {
     isSuccessful: false,
     isLoading: false,
     top: new Animated.Value(screenHeight),
-    // top: 0,
     scale: new Animated.Value(1.3),
     translateY: new Animated.Value(0)
   };
+
+  componentDidMount() {
+    this.retrieveName();
+  }
 
   componentDidUpdate() {
     if (this.props.action == "openLogin") {
@@ -64,26 +75,70 @@ class ModalLogin extends React.Component {
     }
   }
 
+  storeName = async name => {
+    try {
+      await AsyncStorage.setItem("name", name);
+    } catch (error) { }
+  };
+
+  retrieveName = async () => {
+    try {
+      const name = await AsyncStorage.getItem("name");
+      if (name !== null) {
+        console.log(name);
+        this.props.updateName(name);
+      }
+    } catch (error) {}
+  };
 
   handleLogin = () => {
-    console.log(this.state.email, this.state.password);
+    // console.log(this.state.email, this.state.password);
 
     // Start loading
     this.setState({ isLoading: true });
 
     // Simulate API Call
-    setTimeout(() => {
-      // Stop loading and show success
-      this.setState({ isLoading: false });
-      this.setState({ isSuccessful: true });
+    // setTimeout(() => {
+    //   // Stop loading and show success
+    //   this.setState({ isLoading: false });
+    //   this.setState({ isSuccessful: true });
 
-      Alert.alert("Congrats", "You've logged in successfuly!");
+    //   Alert.alert("Congrats", "You've logged in successfuly!");
 
-      setTimeout(() => {
-        this.props.closeLogin();
-        this.setState({ isSuccessful: false });
-      }, 1000);
-    }, 2000);
+    //   setTimeout(() => {
+    //     this.props.closeLogin();
+    //     this.setState({ isSuccessful: false });
+    //   }, 1000);
+    // }, 2000);
+
+    const email = this.state.email
+    const password = this.state.password
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        Alert.alert("Error", error.message);
+      })
+      .then(response =>{
+        // console.log(response);
+        this.setState({ isLoading: false });
+
+        if (response){
+          this.setState({ isSuccessful: true });
+
+          Alert.alert("Congrats", "You've logged in successfuly!");
+
+          this.storeName(response.user.email);
+          this.props.updateName(response.user.email);
+          
+          setTimeout(() => {
+            Keyboard.dismiss();
+            this.props.closeLogin();
+            this.setState({ isSuccessful: false });
+          }, 1000);
+        }
+      })
   };
 
   focusEmail = () => {
