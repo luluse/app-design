@@ -3,7 +3,7 @@ import { ScrollView, SafeAreaView, TouchableOpacity, Animated, Easing, StatusBar
 import styled from 'styled-components';
 import Card from '../components/Card';
 import Course from '../components/Course';
-// import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { NotificationIcon } from '../components/Icons';
 import Logo from '../components/Logo';
 import Menu from '../components/Menu';
@@ -60,7 +60,7 @@ function mapDispatchToProps(dispatch) {
       }),
     openLogin: () =>
       dispatch({
-        type: "OPEN_LOGIN"
+        type: 'OPEN_LOGIN'
       })
   };
 }
@@ -130,7 +130,7 @@ class HomeScreen extends React.Component {
           <SafeAreaView>
             <ScrollView style={{ height: '100%' }}>
               <TitleBar>
-                <TouchableOpacity onPress={this.props.handleAvatar} style={{ position: 'absolute', left: 20 }}>
+                <TouchableOpacity onPress={this.handleAvatar} style={{ position: 'absolute', left: 20 }}>
                   {/* <Avatar source={require('../assets/avatar-default.jpg')} /> */}
                   <Avatar />
                 </TouchableOpacity>

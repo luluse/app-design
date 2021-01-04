@@ -39,7 +39,6 @@ class ModalLogin extends React.Component {
     isSuccessful: false,
     isLoading: false,
     top: new Animated.Value(screenHeight),
-    // top: 0,
     scale: new Animated.Value(1.3),
     translateY: new Animated.Value(0)
   };
