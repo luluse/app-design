@@ -17,6 +17,11 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: "UPDATE_NAME",
         name: name
+      }),
+    updateAvatar: avatar =>
+      dispatch({
+        type: "UPDATE_AVATAR",
+        avatar
       })
   };
 }

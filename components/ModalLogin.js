@@ -25,6 +25,11 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: "UPDATE_NAME",
         name
+      }),
+    updateAvatar: avatar =>
+      dispatch({
+        type: "UPDATE_AVATAR",
+        avatar
       })
   };
 }
@@ -153,6 +158,8 @@ class ModalLogin extends React.Component {
         const name = response[0].name;
         const avatar = response[0].photo;
         saveState({ name, avatar });
+        this.props.updateName(name);
+        this.props.updateAvatar(avatar);
       });
   };
 
