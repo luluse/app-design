@@ -4,7 +4,7 @@ import { Animated, TouchableOpacity, Dimensions } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import MenuItem from './MenuItems';
 import { connect } from 'react-redux';
-import { AsyncStorage } from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 let screenWidth = Dimensions.get("window").width;
 var cardWidth = screenWidth;
@@ -24,8 +24,13 @@ function mapDispatchToProps(dispatch) {
       }),
     updateName: name =>
       dispatch({
-        type: "UPDATE_NAME",
+        type: 'UPDATE_NAME',
         name
+      }),
+    updateAvatar: avatar =>
+      dispatch({
+        type: "UPDATE_AVATAR",
+        avatar
       })
 
   };
@@ -62,7 +67,9 @@ class Menu extends React.Component {
   handleMenu = index => {
     if (index === 3) {
       this.props.closeMenu();
-      this.props.updateName();
+      this.props.updateName('Stranger');
+      this.props.updateAvatar(
+        "https://cl.ly/55da82beb939/download/avatar-default.jpg");
       AsyncStorage.clear();
     }
   };
