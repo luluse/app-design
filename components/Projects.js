@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { Animated, TouchableWithoutFeedback, Dimensions, StatusBar, TouchableOpacity } from "react-native";
+import React from 'react';
+import styled from 'styled-components';
+import { Animated, TouchableWithoutFeedback, Dimensions, StatusBar, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from "@expo/vector-icons";
-import { connect } from "react-redux";
+import { Ionicons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
@@ -15,18 +15,18 @@ function mapDispatchToProps(dispatch) {
   return {
     openCard: () =>
       dispatch({
-        type: "OPEN_CARD"
+        type: 'OPEN_CARD'
       }),
     closeCard: () =>
       dispatch({
-        type: "CLOSE_CARD"
+        type: 'CLOSE_CARD'
       })
   };
 }
 
 
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 const tabBarHeight = 83;
 
 class Project extends React.Component {
@@ -79,24 +79,24 @@ class Project extends React.Component {
             {this.props.text}
           </AnimatedText>
           {/* <AnimatedLinearGradient
-            colors={["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 1)"]}
+            colors={['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)']}
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 330,
-              width: "100%",
+              width: '100%',
               height: this.state.textHeight
             }}
           /> */}
           <TouchableOpacity
             onPress={this.closeCard}
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 20,
               right: 20
             }}
           >
             <AnimatedCloseView style={{ opacity: this.state.opacity }}>
-              <Ionicons name="ios-close" size={32} color="#546bfb" />
+              <Ionicons name='ios-close' size={32} color='#546bfb' />
             </AnimatedCloseView>
           </TouchableOpacity>
         </AnimatedContainer>

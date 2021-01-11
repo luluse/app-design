@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import {
   ScrollView,
   SafeAreaView,
   Animated,
   TouchableOpacity,
   Dimensions
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { connect } from "react-redux";
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
 
-let screenWidth = Dimensions.get("window").width;
+let screenWidth = Dimensions.get('window').width;
 var cardWith = screenWidth - 40;
 if (screenWidth > 500) {
   cardWith = 460;
@@ -24,7 +24,7 @@ function mapDispatchToProps(dispatch) {
   return {
     closeNotif: () =>
       dispatch({
-        type: "CLOSE_NOTIF"
+        type: 'CLOSE_NOTIF'
       })
   };
 }
@@ -41,7 +41,7 @@ class Notifications extends React.Component {
   };
 
   toggleNotif = () => {
-    if (this.props.action == "openNotif") {
+    if (this.props.action == 'openNotif') {
       Animated.parallel([
         Animated.spring(this.state.translateY, {
           toValue: 0
@@ -57,7 +57,7 @@ class Notifications extends React.Component {
       ]).start();
     }
 
-    if (this.props.action == "closeNotif") {
+    if (this.props.action == 'closeNotif') {
       Animated.parallel([
         Animated.spring(this.state.translateY, {
           toValue: 30
@@ -80,15 +80,15 @@ class Notifications extends React.Component {
         <TouchableOpacity
           onPress={this.props.closeNotif}
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 40,
-            left: "50%",
+            left: '50%',
             marginLeft: -22,
             zIndex: 100
           }}
         >
           <CloseButton style={{ elevation: 20 }}>
-            <Ionicons name="ios-close" size={44} color="#546bfb" />
+            <Ionicons name='ios-close' size={44} color='#546bfb' />
           </CloseButton>
         </TouchableOpacity>
         <SafeAreaView>
@@ -104,7 +104,7 @@ class Notifications extends React.Component {
                   }}
                 >
                   <Header>
-                    <Logo source={{ uri: item.logo }} resizeMode="contain" />
+                    <Logo source={{ uri: item.logo }} resizeMode='contain' />
                     <Title>{item.title}</Title>
                     <DateContainer>
                       <Date>{item.date}</Date>
@@ -218,30 +218,30 @@ const Text = styled.Text`
 
 const items = [
   {
-    logo: "https://cl.ly/a4d00a918f39/download/logo-vue.png",
-    title: "Vue.js for Designers",
+    logo: 'https://cl.ly/a4d00a918f39/download/logo-vue.png',
+    title: 'Vue.js for Designers',
     text:
-      "Make a dashboard web-app with a complete login system, dark mode, and animated charts for your data.",
-    date: "23 Jan"
+      'Make a dashboard web-app with a complete login system, dark mode, and animated charts for your data.',
+    date: '23 Jan'
   },
   {
-    logo: "https://cl.ly/5c470805a500/download/logo-invision.png",
-    title: "InVision Studio",
+    logo: 'https://cl.ly/5c470805a500/download/logo-invision.png',
+    title: 'InVision Studio',
     text:
-      "Learn how to prototype interactions directly in the design tool in this 10-section course.",
-    date: "27 Nov"
+      'Learn how to prototype interactions directly in the design tool in this 10-section course.',
+    date: '27 Nov'
   },
   {
-    logo: "https://cl.ly/cc8368bef551/download/logo-framerx.png",
-    title: "Framer X",
-    text: "Create production-ready React components right in the design tool.",
-    date: "26 SEP"
+    logo: 'https://cl.ly/cc8368bef551/download/logo-framerx.png',
+    title: 'Framer X',
+    text: 'Create production-ready React components right in the design tool.',
+    date: '26 SEP'
   },
   {
-    logo: "https://cl.ly/c01bb29804bd/download/logo-figma.png",
-    title: "Design System",
+    logo: 'https://cl.ly/c01bb29804bd/download/logo-figma.png',
+    title: 'Design System',
     text:
-      "Complete guide to designing a site using a collaborative and powerful design system.",
-    date: "4 SEP"
+      'Complete guide to designing a site using a collaborative and powerful design system.',
+    date: '4 SEP'
   }
 ];

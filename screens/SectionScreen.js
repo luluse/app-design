@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { TouchableOpacity, StatusBar, Linking, ScrollView } from "react-native";
+import React from 'react';
+import styled from 'styled-components';
+import { TouchableOpacity, StatusBar, Linking, ScrollView } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { Ionicons } from "@expo/vector-icons";
-import Markdown from "react-native-showdown";
+import { Ionicons } from '@expo/vector-icons';
+import Markdown from 'react-native-showdown';
 
 class SectionScreen extends React.Component {
   static navigationOptions = {
@@ -11,11 +11,11 @@ class SectionScreen extends React.Component {
   };
 
   componentDidMount() {
-    StatusBar.setBarStyle("light-content", true);
+    StatusBar.setBarStyle('light-content', true);
   }
 
   componentWillUnmount() {
-    StatusBar.setBarStyle("dark-content", true);
+    StatusBar.setBarStyle('dark-content', true);
   }
 
   render() {
@@ -42,17 +42,17 @@ class SectionScreen extends React.Component {
             this.props.navigation.goBack();
           }}
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 20,
             right: 20
           }}
         >
           <CloseView>
             <Ionicons
-              name="ios-close"
+              name='ios-close'
               size={36}
               style={{ marginTop: -2 }}
-              color="#4775f2"
+              color='#4775f2'
             />
           </CloseView>
         </TouchableOpacity>
@@ -60,11 +60,11 @@ class SectionScreen extends React.Component {
           {/* <WebView
             source={{ html: section.content + htmlStyles }} scalesPageToFit={false}
             scrollEnabled={false}
-            ref="webview"
+            ref='webview'
             onNavigationStateChange={event => {
               console.log(event);
 
-              if (event.url != "about:blank") {
+              if (event.url != 'about:blank') {
                 this.refs.webview.stopLoading();
                 Linking.openURL(event.url);
               }
@@ -86,8 +86,8 @@ export default SectionScreen;
 
 const htmlContent = `
       <h2>This is a title</h2>
-      <p>This <strong>is</strong> a <a href="http://designcode.io">link</a></p>
-      <img src="https://cl.ly/8861f359ed6d/download/Wave14.jpg" />
+      <p>This <strong>is</strong> a <a href='http://designcode.io'>link</a></p>
+      <img src='https://cl.ly/8861f359ed6d/download/Wave14.jpg' />
     `;
 
 const htmlStyles = `

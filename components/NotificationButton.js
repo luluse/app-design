@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { NotificationIcon } from "../components/Icons";
+import React from 'react';
+import styled from 'styled-components';
+import { NotificationIcon } from '../components/Icons';
 
 const NotificationButton = () => (
   <Container>

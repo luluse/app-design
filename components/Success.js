@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import LottieView from 'lottie-react-native';
-import { Dimensions, Animated } from "react-native";
+import { Dimensions, Animated } from 'react-native';
 
-let screenHeight = Dimensions.get("window").height;
+let screenHeight = Dimensions.get('window').height;
 
 class Success extends React.Component {
 
@@ -36,7 +36,7 @@ class Success extends React.Component {
         style={{ top: this.state.top, opacity: this.state.opacity }}
       >
         <LottieView
-          source={require("../assets/lottie-checked-done.json")}
+          source={require('../assets/lottie-checked-done.json')}
           autoPlay={false}
           loop={false}
           ref={animation => {

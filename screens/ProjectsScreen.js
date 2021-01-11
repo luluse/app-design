@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Project from "../components/Projects";
-import { PanResponder, Animated } from "react-native";
-import { connect } from "react-redux";
+import React from 'react';
+import styled from 'styled-components';
+import Project from '../components/Projects';
+import { PanResponder, Animated } from 'react-native';
+import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
@@ -39,7 +39,7 @@ class ProjectsScreen extends React.Component {
         if (gestureState.dx === 0 && gestureState.dy === 0) {
           return false;
         } else {
-          if (this.props.action == "openCard") {
+          if (this.props.action == 'openCard') {
             return false;
           } else {
             return true;
@@ -115,14 +115,14 @@ class ProjectsScreen extends React.Component {
         </Animated.View>
         <Animated.View
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
             zIndex: -1,
-            width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
             transform: [
               { scale: this.state.scale },
               { translateY: this.state.translateY }
@@ -137,14 +137,14 @@ class ProjectsScreen extends React.Component {
         </Animated.View>
         <Animated.View
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
             zIndex: -3,
-            width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
             transform: [{ scale: this.state.thirdScale }, { translateY: this.state.thirdTranslateY }]
           }}
         >
@@ -185,24 +185,24 @@ const AnimatedMask = Animated.createAnimatedComponent(Mask);
 
 const projects = [
   {
-    title: "Design project",
-    image: require("../assets/background5.jpg"),
-    author: "Lulu",
+    title: 'Design project',
+    image: require('../assets/background5.jpg'),
+    author: 'Lulu',
     text:
-      "Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app"
+      'Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app'
   },
   {
-    title: "The CLI",
-    image: require("../assets/background6.jpg"),
-    author: "The Async and Awaits",
+    title: 'The CLI',
+    image: require('../assets/background6.jpg'),
+    author: 'The Async and Awaits',
     text:
-      "Dating app on the terminal using socket.io"
+      'Dating app on the terminal using socket.io'
   },
   {
-    title: "What's Cookin",
-    image: require("../assets/background7.jpg"),
-    author: "Hot Bots",
+    title: 'What\'s Cookin',
+    image: require('../assets/background7.jpg'),
+    author: 'Hot Bots',
     text:
-      "A social platform to inspire and get insired by other foodies in your netork."
+      'A social platform to inspire and get insired by other foodies in your netork.'
   }
 ];

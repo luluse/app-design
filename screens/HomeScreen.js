@@ -7,9 +7,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { NotificationIcon } from '../components/Icons';
 import Logo from '../components/Logo';
 import Menu from '../components/Menu';
-import { connect } from "react-redux";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import { connect } from 'react-redux';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import ModalLogin from '../components/ModalLogin';
 import Avatar from '../components/Avatar';
 import NotificationButton from '../components/NotificationButton';
@@ -50,7 +50,6 @@ const CardsQuery = gql`
     `;
 
 function mapStateToProps(state) {
-  return { action: state.action };
   return { action: state.action, name: state.name };
 }
 
@@ -66,7 +65,7 @@ function mapDispatchToProps(dispatch) {
       }),
     openNotif: () =>
       dispatch({
-        type: "OPEN_NOTIF"
+        type: 'OPEN_NOTIF'
       })
   };
 }
@@ -84,7 +83,7 @@ class HomeScreen extends React.Component {
   componentDidMount() {
     StatusBar.setBarStyle('dark-content', true);
 
-    if (Platform.OS === "android") StatusBar.setBarStyle("light-content", true);
+    if (Platform.OS === 'android') StatusBar.setBarStyle('light-content', true);
   }
 
   componentDidUpdate() {
@@ -120,7 +119,7 @@ class HomeScreen extends React.Component {
   };
 
   handleAvatar = () => {
-    if (this.props.name !== "Stranger") {
+    if (this.props.name !== 'Stranger') {
       this.props.openMenu();
     } else {
       this.props.openLogin();
@@ -145,7 +144,7 @@ class HomeScreen extends React.Component {
                 <Name>{this.props.name}</Name>
                 <TouchableOpacity
                   onPress={() => this.props.openNotif()}
-                  style={{ position: "absolute", right: 20, top: 5 }}
+                  style={{ position: 'absolute', right: 20, top: 5 }}
                 >
                   <NotificationButton />
                 </TouchableOpacity>
@@ -157,7 +156,7 @@ class HomeScreen extends React.Component {
                 ))}
 
               </ScrollView>
-              <Subtitle>{"Continue Learning".toUpperCase()}</Subtitle>
+              <Subtitle>{'Continue Learning'.toUpperCase()}</Subtitle>
               <ScrollView horizontal={true} style={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false}>
                 <Query query={CardsQuery}>
                   {({ loading, error, data }) => {
@@ -170,7 +169,7 @@ class HomeScreen extends React.Component {
                           <TouchableOpacity
                             key={index}
                             onPress={() => {
-                              this.props.navigation.push("Section", {
+                              this.props.navigation.push('Section', {
                                 section: card
                               });
                             }}>
@@ -191,7 +190,7 @@ class HomeScreen extends React.Component {
                 </Query>
 
               </ScrollView>
-              <Subtitle>{"Popular Courses".toUpperCase()}</Subtitle>
+              <Subtitle>{'Popular Courses'.toUpperCase()}</Subtitle>
               <CoursesContainer>
                 {courses.map((course, index) => (
                   <Course key={index}
@@ -343,40 +342,40 @@ const cards = [
 
 const courses = [
   {
-    title: "Prototype in InVision Studio",
-    subtitle: "10 sections",
-    image: require("../assets/background13.jpg"),
-    logo: require("../assets/logo-studio.png"),
-    author: "Meng To",
-    avatar: require("../assets/avatar.jpg"),
-    caption: "Design and interactive prototype"
+    title: 'Prototype in InVision Studio',
+    subtitle: '10 sections',
+    image: require('../assets/background13.jpg'),
+    logo: require('../assets/logo-studio.png'),
+    author: 'Meng To',
+    avatar: require('../assets/avatar.jpg'),
+    caption: 'Design and interactive prototype'
   },
   {
-    title: "React for Designers",
-    subtitle: "12 sections",
-    image: require("../assets/background11.jpg"),
-    logo: require("../assets/logo-react.png"),
-    author: "Meng To",
-    avatar: require("../assets/avatar.jpg"),
-    caption: "Learn to design and code a React site"
+    title: 'React for Designers',
+    subtitle: '12 sections',
+    image: require('../assets/background11.jpg'),
+    logo: require('../assets/logo-react.png'),
+    author: 'Meng To',
+    avatar: require('../assets/avatar.jpg'),
+    caption: 'Learn to design and code a React site'
   },
   {
-    title: "Design and Code with Framer X",
-    subtitle: "10 sections",
-    image: require("../assets/background14.jpg"),
-    logo: require("../assets/logo-framerx.png"),
-    author: "Meng To",
-    avatar: require("../assets/avatar.jpg"),
-    caption: "Create powerful design and code components for your app"
+    title: 'Design and Code with Framer X',
+    subtitle: '10 sections',
+    image: require('../assets/background14.jpg'),
+    logo: require('../assets/logo-framerx.png'),
+    author: 'Meng To',
+    avatar: require('../assets/avatar.jpg'),
+    caption: 'Create powerful design and code components for your app'
   },
   {
-    title: "Design System in Figma",
-    subtitle: "10 sections",
-    image: require("../assets/background6.jpg"),
-    logo: require("../assets/logo-figma.png"),
-    author: "Meng To",
-    avatar: require("../assets/avatar-default.jpg"),
+    title: 'Design System in Figma',
+    subtitle: '10 sections',
+    image: require('../assets/background6.jpg'),
+    logo: require('../assets/logo-figma.png'),
+    author: 'Meng To',
+    avatar: require('../assets/avatar-default.jpg'),
     caption:
-      "Complete guide to designing a site using a collaborative design tool"
+      'Complete guide to designing a site using a collaborative design tool'
   }
 ]
