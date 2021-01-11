@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactReduxContext } from 'react-redux';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function mapStateToProps(state) {
   return {
@@ -15,12 +15,12 @@ function mapDispatchToProps(dispatch) {
   return {
     updateName: name =>
       dispatch({
-        type: "UPDATE_NAME",
+        type: 'UPDATE_NAME',
         name: name
       }),
     updateAvatar: avatar =>
       dispatch({
-        type: "UPDATE_AVATAR",
+        type: 'UPDATE_AVATAR',
         avatar
       })
   };
@@ -33,7 +33,7 @@ class Avatar extends React.Component {
   }
 
   loadState = () => {
-    AsyncStorage.getItem("state").then(serializedState => {
+    AsyncStorage.getItem('state').then(serializedState => {
       const state = JSON.parse(serializedState);
       console.log(state);
 

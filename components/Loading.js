@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import LottieView from 'lottie-react-native';
-import { Dimensions, Animated } from "react-native";
+import { Dimensions, Animated } from 'react-native';
 
-let screenHeight = Dimensions.get("window").height;
+let screenHeight = Dimensions.get('window').height;
 
 class Loading extends React.Component {
 
@@ -37,7 +37,7 @@ class Loading extends React.Component {
         style={{ top: this.state.top, opacity: this.state.opacity }}
       >
         <LottieView
-          source={require("../assets/lottie-loading-fluid.json")}
+          source={require('../assets/lottie-loading-fluid.json')}
           autoPlay={false}
           loop={true}
           ref={animation => {

@@ -4,12 +4,12 @@ import { TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert, Dimensions
 import { BlurView } from 'expo-blur';
 import Success from './Success';
 import Loading from './Loading';
-import { connect } from "react-redux";
-import firebase from "./Firebase";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { saveState } from "./AsyncStorage";
+import { connect } from 'react-redux';
+import firebase from './Firebase';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { saveState } from './AsyncStorage';
 
-const screenHeight = Dimensions.get("window").height;
+const screenHeight = Dimensions.get('window').height;
 
 function mapStateToProps(state) {
   return { action: state.action };
@@ -19,16 +19,16 @@ function mapDispatchToProps(dispatch) {
   return {
     closeLogin: () =>
       dispatch({
-        type: "CLOSE_LOGIN"
+        type: 'CLOSE_LOGIN'
       }),
-    updateName: (name) =>
+    updateName: name =>
       dispatch({
-        type: "UPDATE_NAME",
+        type: 'UPDATE_NAME',
         name
       }),
     updateAvatar: avatar =>
       dispatch({
-        type: "UPDATE_AVATAR",
+        type: 'UPDATE_AVATAR',
         avatar
       })
   };
@@ -37,10 +37,10 @@ function mapDispatchToProps(dispatch) {
 class ModalLogin extends React.Component {
 
   state = {
-    email: "",
-    password: "",
-    iconEmail: require("../assets/icon-email.png"),
-    iconPassword: require("../assets/icon-password.png"),
+    email: '',
+    password: '',
+    iconEmail: require('../assets/icon-email.png'),
+    iconPassword: require('../assets/icon-password.png'),
     isSuccessful: false,
     isLoading: false,
     top: new Animated.Value(screenHeight),
@@ -53,7 +53,7 @@ class ModalLogin extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.action == "openLogin") {
+    if (this.props.action == 'openLogin') {
       Animated.timing(this.state.top, {
         toValue: 0,
         duration: 0,
@@ -64,7 +64,7 @@ class ModalLogin extends React.Component {
         duration: 0
       }).start();
     }
-    if (this.props.action == "closeLogin") {
+    if (this.props.action == 'closeLogin') {
       setTimeout(() => {
         Animated.timing(this.state.top, {
           toValue: screenHeight,
@@ -82,13 +82,13 @@ class ModalLogin extends React.Component {
 
   storeName = async name => {
     try {
-      await AsyncStorage.setItem("name", name);
-    } catch (error) { }
+      await AsyncStorage.setItem('name', name);
+    } catch (error) {}
   };
 
   retrieveName = async () => {
     try {
-      const name = await AsyncStorage.getItem("name");
+      const name = await AsyncStorage.getItem('name');
       if (name !== null) {
         console.log(name);
         this.props.updateName(name);
@@ -102,20 +102,6 @@ class ModalLogin extends React.Component {
     // Start loading
     this.setState({ isLoading: true });
 
-    // Simulate API Call
-    // setTimeout(() => {
-    //   // Stop loading and show success
-    //   this.setState({ isLoading: false });
-    //   this.setState({ isSuccessful: true });
-
-    //   Alert.alert("Congrats", "You've logged in successfuly!");
-
-    //   setTimeout(() => {
-    //     this.props.closeLogin();
-    //     this.setState({ isSuccessful: false });
-    //   }, 1000);
-    // }, 2000);
-
     const email = this.state.email
     const password = this.state.password
 
@@ -123,7 +109,7 @@ class ModalLogin extends React.Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(function(error) {
-        Alert.alert("Error", error.message);
+        Alert.alert('Error', error.message);
       })
       .then(response =>{
         // console.log(response);
@@ -132,14 +118,14 @@ class ModalLogin extends React.Component {
         if (response){
           this.setState({ isSuccessful: true });
 
-          Alert.alert("Congrats", "You've logged in successfuly!");
+          Alert.alert('Congrats', "You've logged in successfully!");
 
           // this.storeName(response.user.email);
           this.fetchUser()
           this.props.updateName(response.user.email);
           
           setTimeout(() => {
-            Keyboard.dismiss();
+            // Keyboard.dismiss();
             this.props.closeLogin();
             this.setState({ isSuccessful: false });
           }, 1000);
@@ -148,9 +134,9 @@ class ModalLogin extends React.Component {
   };
 
   fetchUser = () => {
-    fetch("https://uifaces.co/api?limit=1&random", {
+    fetch('https://uifaces.co/api?limit=1&random', {
       headers: new Headers({
-        "X-API-KEY": "eeaafbe81657073cd70ac6e3de1bd6"
+        'X-API-KEY': 'eeaafbe81657073cd70ac6e3de1bd6'
       })
     })
       .then(response => response.json())
@@ -165,15 +151,15 @@ class ModalLogin extends React.Component {
 
   focusEmail = () => {
     this.setState({
-      iconEmail: require("../assets/icon-email-animated.gif"),
-      iconPassword: require("../assets/icon-password.png")
+      iconEmail: require('../assets/icon-email-animated.gif'),
+      iconPassword: require('../assets/icon-password.png')
     });
   };
 
   focusPassword = () => {
     this.setState({
-      iconEmail: require("../assets/icon-email.png"),
-      iconPassword: require("../assets/icon-password-animated.gif")
+      iconEmail: require('../assets/icon-email.png'),
+      iconPassword: require('../assets/icon-password-animated.gif')
     });
   };
 
@@ -187,9 +173,9 @@ class ModalLogin extends React.Component {
       <AnimatedContainer style={{ top: this.state.top }}>
         <TouchableWithoutFeedback onPress={this.tapBackground}>
           <BlurView
-            tint="default"
+            tint='default'
             intensity={100}
-            style={{ position: "absolute", width: "100%", height: "100%" }}
+            style={{ position: 'absolute', width: '100%', height: '100%' }}
           />
         </TouchableWithoutFeedback>
         <AnimatedModal
@@ -199,17 +185,17 @@ class ModalLogin extends React.Component {
               { translateY: this.state.translateY }
             ]
           }}>
-          <Logo source={require("../assets/logo-dc.png")} />
+          <Logo source={require('../assets/logo-dc.png')} />
           <Text>Log in to access content</Text>
           <TextInput
             onChangeText={email => this.setState({ email })}
-            placeholder="Email"
-            keyboardType="email-address"
+            placeholder='Email'
+            keyboardType='email-address'
             value={this.state.email}
             onFocus={this.focusEmail} />
           <TextInput
             onChangeText={password => this.setState({ password })}
-            placeholder="Password"
+            placeholder='Password'
             secureTextEntry={true}
             value={this.state.password}
             onFocus={this.focusPassword} />

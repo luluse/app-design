@@ -1,14 +1,14 @@
-import React from "react";
-import { createStackNavigator } from "react-navigation-stack";
-import { createBottomTabNavigator } from "react-navigation-tabs";
-import HomeScreen from "../screens/HomeScreen";
-import SectionScreen from "../screens/SectionScreen";
-import { Ionicons } from "@expo/vector-icons"
-import CoursesScreen from "../screens/CoursesScreen";
-import ProjectsScreen from "../screens/ProjectsScreen";
+import React from 'react';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import HomeScreen from '../screens/HomeScreen';
+import SectionScreen from '../screens/SectionScreen';
+import { Ionicons } from '@expo/vector-icons'
+import CoursesScreen from '../screens/CoursesScreen';
+import ProjectsScreen from '../screens/ProjectsScreen';
 
-const activeColor = "#4775f2";
-const inactiveColor = "#b8bece";
+const activeColor = '#4775f2';
+const inactiveColor = '#b8bece';
 
 
 const HomeStack = createStackNavigator({
@@ -22,16 +22,16 @@ HomeStack.navigationOptions = ({ navigation }) => {
   var tabBarVisible = true;
   const routeName = navigation.state.routes[navigation.state.index].routeName;
 
-  if (routeName == "Section") {
+  if (routeName == 'Section') {
     tabBarVisible = false;
   }
 
   return {
     tabBarVisible,
-    tabBarLabel: "Home",
+    tabBarLabel: 'Home',
     tabBarIcon: ({ focused }) => (
       <Ionicons
-        name="ios-home"
+        name='ios-home'
         size={26}
         color={focused ? activeColor : inactiveColor}
       />
@@ -44,10 +44,10 @@ const CoursesStack = createStackNavigator({
 });
 
 CoursesStack.navigationOptions = {
-  tabBarLabel: "Courses",
+  tabBarLabel: 'Courses',
   tabBarIcon: ({ focused }) => (
     <Ionicons
-      name="ios-albums"
+      name='ios-albums'
       size={26}
       color={focused ? activeColor : inactiveColor}
     />
@@ -59,10 +59,10 @@ const ProjectsStack = createStackNavigator({
 });
 
 ProjectsStack.navigationOptions = {
-  tabBarLabel: "Projects",
+  tabBarLabel: 'Projects',
   tabBarIcon: ({ focused }) => (
     <Ionicons
-      name="ios-folder"
+      name='ios-folder'
       size={26}
       color={focused ? activeColor : inactiveColor}
     />

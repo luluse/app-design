@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { Dimensions } from 'react-native';
 
-const screenWidth = Dimensions.get("window").width;
+const screenWidth = Dimensions.get('window').width;
 
 function getCourseWidth(screenWidth) {
   var cardWidth = screenWidth - 40;
@@ -23,7 +23,7 @@ class Course extends React.Component {
   };
 
   componentDidMount(){
-    Dimensions.addEventListener("change", this.adaptLayout);
+    Dimensions.addEventListener('change', this.adaptLayout);
   }
 
   adaptLayout = dimensions => {
@@ -37,7 +37,7 @@ class Course extends React.Component {
       <Container style={{ width: this.state.cardWidth }}>
         <Cover>
           <Image source={this.props.image} />
-          <Logo source={this.props.logo} resizeMode="contain" />
+          <Logo source={this.props.logo} resizeMode='contain' />
           <Subtitle>{this.props.subtitle}</Subtitle>
           <Title>{this.props.title}</Title>
         </Cover>
