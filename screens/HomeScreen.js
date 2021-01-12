@@ -284,29 +284,45 @@ padding-left: 10px;
 
 const logos = [
   {
-    image: require('../assets/logo-framerx.png'),
-    text: 'Framer X'
-  },
-  {
-    image: require('../assets/logo-figma.png'),
-    text: 'Figma'
-  },
-  {
-    image: require('../assets/logo-studio.png'),
-    text: 'Studio'
+    image: require('../assets/js-logo.png'),
+    text: 'JavaScript'
   },
   {
     image: require('../assets/logo-react.png'),
     text: 'React'
   },
   {
-    image: require('../assets/logo-swift.png'),
-    text: 'Swift'
+    image: require('../assets/nodejs-logo.jpg'),
+    text: 'Node.js'
   },
   {
-    image: require('../assets/logo-sketch.png'),
-    text: 'Sketch'
-  }
+    image: require('../assets/vscode-logo.png'),
+    text: 'VS Code'
+  },
+  {
+    image: require('../assets/github-logo.png'),
+    text: 'Github'
+  },
+  {
+    image: require('../assets/sql-logo.jpg'),
+    text: 'SQL'
+  },
+  {
+    image: require('../assets/postgres-logo.png'),
+    text: 'PostgreSQL'
+  },
+  {
+    image: require('../assets/mongo-logo.jpg'),
+    text: 'MongoDB'
+  },
+  {
+    image: require('../assets/html-logo.png'),
+    text: 'HTML 5'
+  },
+  {
+    image: require('../assets/css-logo.png'),
+    text: 'CSS 3'
+  },
 ];
 
 const cards = [
