@@ -156,7 +156,7 @@ class HomeScreen extends React.Component {
                 ))}
 
               </ScrollView>
-              <Subtitle>{'Continue Learning'.toUpperCase()}</Subtitle>
+              <Subtitle>{'WORK IN PROGRESS'.toUpperCase()}</Subtitle>
               <ScrollView horizontal={true} style={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false}>
                 <Query query={CardsQuery}>
                   {({ loading, error, data }) => {
