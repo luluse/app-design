@@ -284,28 +284,28 @@ padding-left: 10px;
 
 const logos = [
   {
-    image: require('../assets/js-logo.png'),
-    text: 'JavaScript'
+    image: require('../assets/vino.png'),
+    text: 'Wine'
   },
   {
-    image: require('../assets/logo-react.png'),
-    text: 'React'
+    image: require('../assets/beer.png'),
+    text: 'Beer'
   },
   {
-    image: require('../assets/nodejs-logo.jpg'),
-    text: 'Node.js'
+    image: require('../assets/liquor.png'),
+    text: 'Liquor'
   },
   {
-    image: require('../assets/vscode-logo.png'),
-    text: 'VS Code'
+    image: require('../assets/cocktail.png'),
+    text: 'Cocktail'
   },
   {
-    image: require('../assets/github-logo.png'),
-    text: 'Github'
+    image: require('../assets/soda.png'),
+    text: 'Soft Drink'
   },
   {
-    image: require('../assets/sql-logo.jpg'),
-    text: 'SQL'
+    image: require('../assets/glassware.png'),
+    text: 'Glassware'
   },
   {
     image: require('../assets/postgres-logo.png'),
