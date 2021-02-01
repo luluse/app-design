@@ -135,6 +135,8 @@ const Title = styled.Text`
   position: absolute;
   top: 20px;
   left: 20px;
+  padding-top: 10px;
+  padding-right: 20px;
   font-size: 24px;
   font-weight: bold;
   color: white;

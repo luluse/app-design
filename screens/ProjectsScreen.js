@@ -185,24 +185,24 @@ const AnimatedMask = Animated.createAnimatedComponent(Mask);
 
 const projects = [
   {
-    title: 'Design project',
-    image: require('../assets/background5.jpg'),
-    author: 'Lulu',
+    title: '5 Favorite Sparkling Wine Pairing Recipes',
+    image: require('../assets/champagne.jpg'),
+    author: 'Wine Spectator',
     text:
-      'Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app. Thanks to Design+Code, I improved my design skill and learned to do animations for my app'
+      'From light bites to dessert, these bubbly matches are ideal for Valentine\'s Day or other celebrations. Many celebratory occasions have traditional foods tied to them, and Valentine’s Day is no exception. You’ve got to have chocolate. But what to eat before the chocolate? My feeling is that lighter foods are good so that you save room for dessert and stay limber. And not only is sparkling wine a great food accompaniment, it’s also so buoyant and happy-making and convivial that it suits the day. Below are five dishes—canapés, starters and small plates—paired with various bubbly styles to keep your Valentine’s evening light so you can concentrate on the main event. No, no, I mean the chocolate. Serving Champagne and canapés together is a classic move to start a special meal. A few years back, New York Scandinavian restaurant Aquavit created an all-canapé menu for us to show off the range of styles in these sparkling wines and their respective, and somewhat elevated, food matches.'
   },
   {
-    title: 'The CLI',
-    image: require('../assets/background6.jpg'),
-    author: 'The Async and Awaits',
+    title: 'Compliment the Hop Flavors - Guide to IPA Food Pairing',
+    image: require('../assets/ipa3.jpg'),
+    author: 'Hop Culture',
     text:
-      'Dating app on the terminal using socket.io'
+      'One of the most fundamental principles of beer and food pairing is matching “intensity.” In short, the food can\’t be more powerful than the beer and vice versa. If you don’t nail this then nothing else in this guide matters. That being said, you’ll generally find the most success with session- and regular-strength IPAs. I find that double, triple, and quadruple IPAs have far too much flavor (whether that be bitterness, juiciness, sweetness, etc.) and ABV to play nicely with most dishes. They tend to completely dominate, and are best enjoyed outside the context of intentional pairing.'
   },
   {
-    title: 'What\'s Cookin',
-    image: require('../assets/background7.jpg'),
-    author: 'Hot Bots',
+    title: 'Gold, Silver, Reposado & Anejo: Tequila and Food pairings',
+    image: require('../assets/tequila.jpg'),
+    author: 'Sip Tequila',
     text:
-      'A social platform to inspire and get insired by other foodies in your netork.'
+      'Tequila is a versatile spirit that can be paired with a wide variety of foods. For our sipping tequilas, here are some recommendations. Desserts: The sweetness in barrel-aged spirits is a perfect partner to after-dinner treat. Some ideas are: Top-quality dark chocolate, milk chocolate or salted caramel with a side of Extra añejo. We love Edward Marc for all of the above and their toffee covered almonds too! Apple pie, chocolate desserts (including churros), crème brûlée, vanilla, coffee, or chocolate ice cream, poached pears, warm berry dishes and banana-based desserts also work very well with the balanced smoothness and viscosity of an aged tequila'
   }
 ];
