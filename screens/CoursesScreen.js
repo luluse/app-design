@@ -15,12 +15,12 @@ class CoursesScreen extends React.Component {
       <Container>
         <ScrollView>
           <Hero>
-            <Background source={require('../assets/background12.jpg')} />
+            <Background source={require('../assets/background-8.jpg')} />
             <LinearGradient
               colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.5)']}
               style={{ position: 'absolute', width: screenWidth, height: 460 }}
             />
-            <Logo source={require('../assets/pairing-icon.png')} />
+            <Logo source={require('../assets/pairing-icon2.png')} />
             <Title>Articles</Title>
             <Caption>continue reading</Caption>
             <Sections>

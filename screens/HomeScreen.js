@@ -140,7 +140,7 @@ class HomeScreen extends React.Component {
                   {/* <Avatar source={require('../assets/avatar-default.jpg')} /> */}
                   <Avatar />
                 </TouchableOpacity>
-                <Title>Welcome to React native</Title>
+                <Title>Welcome to </Title>
                 <Name>{this.props.name}</Name>
                 <TouchableOpacity
                   onPress={() => this.props.openNotif()}
@@ -190,7 +190,7 @@ class HomeScreen extends React.Component {
                 </Query>
 
               </ScrollView>
-              <Subtitle>{'Popular Courses'.toUpperCase()}</Subtitle>
+              <Subtitle>{'Events'.toUpperCase()}</Subtitle>
               <CoursesContainer>
                 {courses.map((course, index) => (
                   <Course key={index}
@@ -342,40 +342,30 @@ const cards = [
 
 const courses = [
   {
-    title: 'Prototype in InVision Studio',
-    subtitle: '10 sections',
-    image: require('../assets/background13.jpg'),
+    title: 'Live webinar - History of Cognac',
+    subtitle: 'feb 20',
+    image: require('../assets/hennessy.jpg'),
     logo: require('../assets/logo-studio.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar.jpg'),
-    caption: 'Design and interactive prototype'
+    author: 'Hennessy',
+    avatar: require('../assets/liquor.png'),
+    caption: 'Learn about production process, grades, region and more'
   },
   {
-    title: 'React for Designers',
-    subtitle: '12 sections',
-    image: require('../assets/background11.jpg'),
+    title: 'Perrin Wine Tasting',
+    subtitle: 'mar 1',
+    image: require('../assets/background-4.jpg'),
     logo: require('../assets/logo-react.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar.jpg'),
-    caption: 'Learn to design and code a React site'
+    author: 'Famille Perrin',
+    avatar: require('../assets/vino.png'),
+    caption: 'Flight of different wines to explore The Cote du Rhone terroir'
   },
   {
-    title: 'Design and Code with Framer X',
-    subtitle: '10 sections',
-    image: require('../assets/background14.jpg'),
+    title: 'Mixology Class',
+    subtitle: 'mar 9',
+    image: require('../assets/background-6.jpg'),
     logo: require('../assets/logo-framerx.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar.jpg'),
-    caption: 'Create powerful design and code components for your app'
-  },
-  {
-    title: 'Design System in Figma',
-    subtitle: '10 sections',
-    image: require('../assets/background6.jpg'),
-    logo: require('../assets/logo-figma.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar-default.jpg'),
-    caption:
-      'Complete guide to designing a site using a collaborative design tool'
+    author: 'Bar Georges V',
+    avatar: require('../assets/cocktail.png'),
+    caption: 'Become a mixologist and create your very own cocktail'
   }
 ]

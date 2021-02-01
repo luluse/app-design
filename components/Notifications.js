@@ -226,16 +226,16 @@ const items = [
   },
   {
     logo: 'https://i.ibb.co/bsz5R4S/article.png',
-    title: 'New article avaiable',
+    title: 'New article available',
     text:
-      '',
+      'Guinness to Release a Stout Aged in Bulleit Bourbon Barrels',
     date: '19 jan'
   },
   {
     logo: 'https://i.ibb.co/bsz5R4S/article.png',
-    title: 'New article avaiable',
+    title: 'New article available',
     text: 
-      '',
+      'Plan a food and wine tour of Emilia Romagna and Lombardy',
     date: '20 Dec'
   }
 ];
