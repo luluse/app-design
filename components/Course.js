@@ -37,14 +37,14 @@ class Course extends React.Component {
       <Container style={{ width: this.state.cardWidth }}>
         <Cover>
           <Image source={this.props.image} />
-          <Logo source={this.props.logo} resizeMode='contain' />
+          {/* <Logo source={this.props.logo} resizeMode='contain' /> */}
           <Subtitle>{this.props.subtitle}</Subtitle>
           <Title>{this.props.title}</Title>
         </Cover>
         <Content>
           <Avatar source={this.props.avatar} />
           <Caption>{this.props.caption}</Caption>
-          <Author>Taught by {this.props.author}</Author>
+          <Author>By {this.props.author}</Author>
         </Content>
       </Container>
     );
@@ -79,7 +79,10 @@ const Image = styled.Image`
 const Logo = styled.Image`
   width: 48px;
   height: 48px;
+  padding: 30px;
   position: absolute;
+  background: white;
+  border-radius: 50px;
   top: 90px;
   left: 50%;
   margin-left: -24px;
@@ -90,7 +93,7 @@ const Title = styled.Text`
   color: white;
   font-weight: 600;
   margin-top: 4px;
-  width: 170px;
+  width: 300px;
   margin-bottom: 20px;
   margin-left: 20px;
 `
@@ -115,7 +118,7 @@ const Avatar = styled.Image`
   position: absolute;
   top: 20px;
   left: 20px;
-  border-radius: 16px;
+
 `
 
 const Caption = styled.Text`
