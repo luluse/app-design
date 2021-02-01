@@ -225,16 +225,17 @@ const items = [
     date: '1 feb'
   },
   {
-    logo: 'https://cl.ly/5c470805a500/download/logo-invision.png',
-    title: 'InVision Studio',
+    logo: 'https://i.ibb.co/bsz5R4S/article.png',
+    title: 'New article avaiable',
     text:
-      'Learn how to prototype interactions directly in the design tool in this 10-section course.',
+      '',
     date: '19 jan'
   },
   {
-    logo: 'https://cl.ly/cc8368bef551/download/logo-framerx.png',
-    title: 'Framer X',
-    text: 'Create production-ready React components right in the design tool.',
+    logo: 'https://i.ibb.co/bsz5R4S/article.png',
+    title: 'New article avaiable',
+    text: 
+      '',
     date: '20 Dec'
   }
 ];

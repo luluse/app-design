@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Project from '../components/Projects';
+import Project from '../components/Pairings';
 import { PanResponder, Animated } from 'react-native';
 import { connect } from 'react-redux';
 
