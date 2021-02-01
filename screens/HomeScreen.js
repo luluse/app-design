@@ -307,27 +307,11 @@ const logos = [
     image: require('../assets/glassware.png'),
     text: 'Glassware'
   },
-  {
-    image: require('../assets/postgres-logo.png'),
-    text: 'PostgreSQL'
-  },
-  {
-    image: require('../assets/mongo-logo.jpg'),
-    text: 'MongoDB'
-  },
-  {
-    image: require('../assets/html-logo.png'),
-    text: 'HTML 5'
-  },
-  {
-    image: require('../assets/css-logo.png'),
-    text: 'CSS 3'
-  },
 ];
 
 const cards = [
   {
-    title: 'React Native for Designers',
+    title: 'React Native for vino',
     image: require('../assets/background11.jpg'),
     subtitle: 'React Native',
     caption: '1 of 12 sections',
