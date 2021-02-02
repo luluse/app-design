@@ -8,6 +8,7 @@ import { NotificationIcon } from '../components/Icons';
 import Logo from '../components/Logo';
 import Menu from '../components/Menu';
 import { connect } from 'react-redux';
+import ApolloClient from 'apollo-boost';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ModalLogin from '../components/ModalLogin';
@@ -43,7 +44,6 @@ const CardsQuery = gql`
               width
               height
             }
-            content
           }
         }
       }
@@ -156,12 +156,14 @@ class HomeScreen extends React.Component {
                 ))}
 
               </ScrollView>
-              <Subtitle>{'WORK IN PROGRESS'.toUpperCase()}</Subtitle>
+              <Subtitle>{'trending'.toUpperCase()}</Subtitle>
               <ScrollView horizontal={true} style={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false}>
                 <Query query={CardsQuery}>
                   {({ loading, error, data }) => {
                     if (loading) return <Message>Loading...</Message>;
                     if (error) return <Message>Error...</Message>;
+
+                    console.log(data.cardsCollection.items);
 
                     return (
                       <CardsContainer>
@@ -180,7 +182,7 @@ class HomeScreen extends React.Component {
                               caption={card.caption}
                               logo={{ uri: card.logo.url }}
                               subtitle={card.subtitle}
-                              content={card.content}
+                              // content={card.content}
                             />
                           </TouchableOpacity>
                         ))}
@@ -254,13 +256,6 @@ width:100%;
 margin-top: 50px;
 padding-left: 80px; 
 `;
-
-// const Avatar = styled.Image`
-// width: 44px;
-// height: 44px;
-// background: black;
-// border-radius: 22px;
-// `;
 
 const Message = styled.Text`
 margin: 20px;
@@ -357,7 +352,7 @@ const courses = [
     logo: require('../assets/logo-react.png'),
     author: 'Famille Perrin',
     avatar: require('../assets/vino.png'),
-    caption: 'Flight of different wines to explore The Cote du Rhone terroir'
+    caption: 'Flight of different wines to explore The Cote du Rhone Terroir'
   },
   {
     title: 'Mixology Class',

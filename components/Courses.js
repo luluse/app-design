@@ -31,7 +31,7 @@ const Container = styled.View`
 const courses = [
   {
     title: 'Guinness to Release a Stout Aged in Bulleit Bourbon Barrels',
-    subtitle: '4 min reading',
+    subtitle: 'jan 19',
     image: require('../assets/guinness.jpg'),
     logo: require('../assets/beer.png'),
     author: 'Food & Wine',
@@ -40,7 +40,7 @@ const courses = [
   },
   {
     title: 'Plan a food and wine tour of Emilia Romagna and Lombardy',
-    subtitle: '8 min reading',
+    subtitle: 'dec 20',
     image: require('../assets/background-2.jpg'),
     logo: require('../assets/logo-react.png'),
     author: 'Decanter',
@@ -49,7 +49,7 @@ const courses = [
   },
   {
     title: 'Sommelier Roundtable: Beverages That Deserve a Breakout Year',
-    subtitle: '6 min reading',
+    subtitle: 'dec 14',
     image: require('../assets/beverage.jpg'),
     logo: require('../assets/cocktail.png'),
     author: 'Wine Spectator',
@@ -58,7 +58,7 @@ const courses = [
   },
   {
     title: 'To Malo Or Not To Malo?',
-    subtitle: '12 min reading',
+    subtitle: 'dec 3',
     image: require('../assets/vat.jpg'),
     logo: require('../assets/logo-figma.png'),
     author: 'WineMaker Magazine',
