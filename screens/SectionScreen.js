@@ -57,6 +57,7 @@ class SectionScreen extends React.Component {
           </CloseView>
         </TouchableOpacity>
         <Content>
+        <WebView source={{ html: htmlContent}}/>
           {/* <WebView
             source={{ html: section.content + htmlStyles }} scalesPageToFit={false}
             scrollEnabled={false}
@@ -69,12 +70,12 @@ class SectionScreen extends React.Component {
                 Linking.openURL(event.url);
               }
             }} /> */}
-          <Markdown
+          {/* <Markdown
             body={section.content}
             pureCSS={htmlStyles}
             scalesPageToFit={false}
             scrollEnabled={false}
-          />
+          /> */}
         </Content>
       </Container>
       </ScrollView>
@@ -178,7 +179,7 @@ const Caption = styled.Text`
   position: absolute;
   bottom: 20px;
   left: 20px;
-  max-width: 300px;
+  max-width: 350px;
 `;
 
 const CloseView = styled.View`
