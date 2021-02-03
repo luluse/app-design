@@ -141,7 +141,7 @@ class HomeScreen extends React.Component {
                   {/* <Avatar source={require('../assets/avatar-default.jpg')} /> */}
                   <Avatar />
                 </TouchableOpacity>
-                <Title>Welcome to </Title>
+                <Title>Welcome to Genuine Drink</Title>
                 <Name>{this.props.name}</Name>
                 <TouchableOpacity
                   onPress={() => this.props.openNotif()}
@@ -223,7 +223,7 @@ const RootView = styled.View`
 `;
 
 const Subtitle = styled.Text`
-color: #b8bece;
+color: grey;
 font-weight:600;
 font-size: 15px;
 margin-left: 20px;
@@ -241,15 +241,15 @@ const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
 
 const Title = styled.Text`
-font-size: 16px;
-color: #b8bece;
-font-weight: 500;
+font-size: 20px;
+/* color: #0000b3; */
+font-weight: 600;
 `;
 
 const Name = styled.Text`
-font-size: 20px;
+font-size: 16px;
 color: #3c4560;
-font-weight: bold;
+/* font-weight: bold; */
 `;
 
 const TitleBar = styled.View`

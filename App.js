@@ -18,7 +18,7 @@ const client = new ApolloClient({
 const initialState = {
   action: '',
   name: 'Stranger',
-  avatar: 'https://cl.ly/55da82beb939/download/avatar-default.jpg'
+  avatar: 'https://i.ibb.co/M2bpZgk/avatar-default.jpg'
 };
 
 const reducer = (state = initialState, action) => {
