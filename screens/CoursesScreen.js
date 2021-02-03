@@ -40,7 +40,7 @@ class CoursesScreen extends React.Component {
             </Sections>
             {/* <Author>
               <Avatar source={require('../assets/avatar.jpg')} /> 
-              <Name>Taught by </Name>
+              <Name> </Name>
             </Author> */}
           </Hero>
           <Subtitle>Latest Articles</Subtitle>

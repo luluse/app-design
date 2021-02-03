@@ -3,8 +3,6 @@ import { ScrollView, SafeAreaView, TouchableOpacity, Animated, Easing, StatusBar
 import styled from 'styled-components';
 import Card from '../components/Card';
 import Course from '../components/Course';
-import { Ionicons } from '@expo/vector-icons';
-import { NotificationIcon } from '../components/Icons';
 import Logo from '../components/Logo';
 import Menu from '../components/Menu';
 import { connect } from 'react-redux';
@@ -15,6 +13,7 @@ import ModalLogin from '../components/ModalLogin';
 import Avatar from '../components/Avatar';
 import NotificationButton from '../components/NotificationButton';
 import Notifications from '../components/Notifications';
+
 
 const CardsQuery = gql`
       {
@@ -138,7 +137,6 @@ class HomeScreen extends React.Component {
             <ScrollView style={{ height: '100%' }}>
               <TitleBar>
                 <TouchableOpacity onPress={this.handleAvatar} style={{ position: 'absolute', left: 20 }}>
-                  {/* <Avatar source={require('../assets/avatar-default.jpg')} /> */}
                   <Avatar />
                 </TouchableOpacity>
                 <Title>Welcome to Genuine Drink</Title>
@@ -164,7 +162,7 @@ class HomeScreen extends React.Component {
                     if (loading) return <Message>Loading...</Message>;
                     if (error) return <Message>Error...</Message>;
 
-                    console.log(data.cardsCollection.items);
+                    {/* console.log(data.cardsCollection.items); */}
 
                     return (
                       <CardsContainer>
@@ -183,7 +181,7 @@ class HomeScreen extends React.Component {
                               caption={card.caption}
                               logo={{ uri: card.logo.url }}
                               subtitle={card.subtitle}
-                            content={card.content}
+                              content={card.content}
                             />
                           </TouchableOpacity>
                         ))}
@@ -242,14 +240,14 @@ const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
 const Title = styled.Text`
 font-size: 20px;
-/* color: #0000b3; */
+color: #0b5394;
 font-weight: 600;
 `;
+
 
 const Name = styled.Text`
 font-size: 16px;
 color: #3c4560;
-/* font-weight: bold; */
 `;
 
 const TitleBar = styled.View`
