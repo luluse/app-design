@@ -27,14 +27,15 @@ height: 80px;
 `;
 
 const Logo = styled.Image`
-width: 44px;
-height: 44px;
+width: 30px;
+height: 30px;
 `;
 
 const Caption = styled.Text`
 color: #3c4560;
-font-size: 20px;
+font-size: 17px;
 font-weight: 600;
+width: 250px;
 `;
 
 const Subtitle = styled.Text`
@@ -80,5 +81,5 @@ font-size:24px;
 font-weight: bold;
 margin-top: 20px;
 margin-left: 20px;
-width: 170px;
+width: 270px;
 `;

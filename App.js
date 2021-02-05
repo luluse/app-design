@@ -6,6 +6,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { URI_CONTENTFUL, BEARER_KEY } from '@env';
 
+console.disableYellowBox = true;
 
 const client = new ApolloClient({
   uri: `${URI_CONTENTFUL}`,
@@ -18,7 +19,7 @@ const client = new ApolloClient({
 const initialState = {
   action: '',
   name: 'Stranger',
-  avatar: 'https://cl.ly/55da82beb939/download/avatar-default.jpg'
+  avatar: 'https://i.ibb.co/M2bpZgk/avatar-default.jpg'
 };
 
 const reducer = (state = initialState, action) => {

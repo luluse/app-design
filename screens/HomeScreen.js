@@ -3,17 +3,17 @@ import { ScrollView, SafeAreaView, TouchableOpacity, Animated, Easing, StatusBar
 import styled from 'styled-components';
 import Card from '../components/Card';
 import Course from '../components/Course';
-import { Ionicons } from '@expo/vector-icons';
-import { NotificationIcon } from '../components/Icons';
 import Logo from '../components/Logo';
 import Menu from '../components/Menu';
 import { connect } from 'react-redux';
+import ApolloClient from 'apollo-boost';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ModalLogin from '../components/ModalLogin';
 import Avatar from '../components/Avatar';
 import NotificationButton from '../components/NotificationButton';
 import Notifications from '../components/Notifications';
+
 
 const CardsQuery = gql`
       {
@@ -137,10 +137,9 @@ class HomeScreen extends React.Component {
             <ScrollView style={{ height: '100%' }}>
               <TitleBar>
                 <TouchableOpacity onPress={this.handleAvatar} style={{ position: 'absolute', left: 20 }}>
-                  {/* <Avatar source={require('../assets/avatar-default.jpg')} /> */}
                   <Avatar />
                 </TouchableOpacity>
-                <Title>Welcome to React native</Title>
+                <Title>Welcome to Genuine Drink</Title>
                 <Name>{this.props.name}</Name>
                 <TouchableOpacity
                   onPress={() => this.props.openNotif()}
@@ -156,12 +155,14 @@ class HomeScreen extends React.Component {
                 ))}
 
               </ScrollView>
-              <Subtitle>{'Continue Learning'.toUpperCase()}</Subtitle>
+              <Subtitle>{'trending'.toUpperCase()}</Subtitle>
               <ScrollView horizontal={true} style={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false}>
                 <Query query={CardsQuery}>
                   {({ loading, error, data }) => {
                     if (loading) return <Message>Loading...</Message>;
                     if (error) return <Message>Error...</Message>;
+
+                    {/* console.log(data.cardsCollection.items); */}
 
                     return (
                       <CardsContainer>
@@ -190,7 +191,7 @@ class HomeScreen extends React.Component {
                 </Query>
 
               </ScrollView>
-              <Subtitle>{'Popular Courses'.toUpperCase()}</Subtitle>
+              <Subtitle>{'Events'.toUpperCase()}</Subtitle>
               <CoursesContainer>
                 {courses.map((course, index) => (
                   <Course key={index}
@@ -220,7 +221,7 @@ const RootView = styled.View`
 `;
 
 const Subtitle = styled.Text`
-color: #b8bece;
+color: grey;
 font-weight:600;
 font-size: 15px;
 margin-left: 20px;
@@ -238,15 +239,15 @@ const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
 
 const Title = styled.Text`
-font-size: 16px;
-color: #b8bece;
-font-weight: 500;
+font-size: 20px;
+color: #0b5394;
+font-weight: 600;
 `;
 
+
 const Name = styled.Text`
-font-size: 20px;
+font-size: 16px;
 color: #3c4560;
-font-weight: bold;
 `;
 
 const TitleBar = styled.View`
@@ -254,13 +255,6 @@ width:100%;
 margin-top: 50px;
 padding-left: 80px; 
 `;
-
-// const Avatar = styled.Image`
-// width: 44px;
-// height: 44px;
-// background: black;
-// border-radius: 22px;
-// `;
 
 const Message = styled.Text`
 margin: 20px;
@@ -284,34 +278,34 @@ padding-left: 10px;
 
 const logos = [
   {
-    image: require('../assets/logo-framerx.png'),
-    text: 'Framer X'
+    image: require('../assets/vino.png'),
+    text: 'Wine'
   },
   {
-    image: require('../assets/logo-figma.png'),
-    text: 'Figma'
+    image: require('../assets/beer.png'),
+    text: 'Beer'
   },
   {
-    image: require('../assets/logo-studio.png'),
-    text: 'Studio'
+    image: require('../assets/liquor.png'),
+    text: 'Liquor'
   },
   {
-    image: require('../assets/logo-react.png'),
-    text: 'React'
+    image: require('../assets/cocktail.png'),
+    text: 'Cocktail'
   },
   {
-    image: require('../assets/logo-swift.png'),
-    text: 'Swift'
+    image: require('../assets/soda.png'),
+    text: 'Soft Drink'
   },
   {
-    image: require('../assets/logo-sketch.png'),
-    text: 'Sketch'
-  }
+    image: require('../assets/glassware.png'),
+    text: 'Glassware'
+  },
 ];
 
 const cards = [
   {
-    title: 'React Native for Designers',
+    title: 'React Native for vino',
     image: require('../assets/background11.jpg'),
     subtitle: 'React Native',
     caption: '1 of 12 sections',
@@ -342,40 +336,30 @@ const cards = [
 
 const courses = [
   {
-    title: 'Prototype in InVision Studio',
-    subtitle: '10 sections',
-    image: require('../assets/background13.jpg'),
+    title: 'Live webinar - History of Cognac',
+    subtitle: 'feb 20',
+    image: require('../assets/hennessy.jpg'),
     logo: require('../assets/logo-studio.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar.jpg'),
-    caption: 'Design and interactive prototype'
+    author: 'Hennessy',
+    avatar: require('../assets/liquor.png'),
+    caption: 'Learn about production process, grades, region and more'
   },
   {
-    title: 'React for Designers',
-    subtitle: '12 sections',
-    image: require('../assets/background11.jpg'),
+    title: 'Perrin Wine Tasting',
+    subtitle: 'mar 1',
+    image: require('../assets/background-4.jpg'),
     logo: require('../assets/logo-react.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar.jpg'),
-    caption: 'Learn to design and code a React site'
+    author: 'Famille Perrin',
+    avatar: require('../assets/vino.png'),
+    caption: 'Flight of different wines to explore The Cote du Rhone Terroir'
   },
   {
-    title: 'Design and Code with Framer X',
-    subtitle: '10 sections',
-    image: require('../assets/background14.jpg'),
+    title: 'Mixology Class',
+    subtitle: 'mar 9',
+    image: require('../assets/background-6.jpg'),
     logo: require('../assets/logo-framerx.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar.jpg'),
-    caption: 'Create powerful design and code components for your app'
-  },
-  {
-    title: 'Design System in Figma',
-    subtitle: '10 sections',
-    image: require('../assets/background6.jpg'),
-    logo: require('../assets/logo-figma.png'),
-    author: 'Meng To',
-    avatar: require('../assets/avatar-default.jpg'),
-    caption:
-      'Complete guide to designing a site using a collaborative design tool'
+    author: 'Bar Georges V',
+    avatar: require('../assets/cocktail.png'),
+    caption: 'Become a mixologist and create your very own cocktail'
   }
 ]

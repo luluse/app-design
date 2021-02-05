@@ -44,10 +44,10 @@ const CoursesStack = createStackNavigator({
 });
 
 CoursesStack.navigationOptions = {
-  tabBarLabel: 'Courses',
+  tabBarLabel: 'Articles',
   tabBarIcon: ({ focused }) => (
     <Ionicons
-      name='ios-albums'
+      name='ios-paper'
       size={26}
       color={focused ? activeColor : inactiveColor}
     />
@@ -59,10 +59,10 @@ const ProjectsStack = createStackNavigator({
 });
 
 ProjectsStack.navigationOptions = {
-  tabBarLabel: 'Projects',
+  tabBarLabel: 'Pairings',
   tabBarIcon: ({ focused }) => (
     <Ionicons
-      name='ios-folder'
+      name='ios-wine'
       size={26}
       color={focused ? activeColor : inactiveColor}
     />

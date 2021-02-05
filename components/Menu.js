@@ -13,7 +13,7 @@ if (screenWidth > 500) {
 }
 
 function mapStateToProps(state) {
-  return { action: state.action }
+  return { action: state.action, name: state.name }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -40,9 +40,9 @@ const screenHeight = Dimensions.get('window').height;
 
 class Menu extends React.Component {
   state = {
-    top: new Animated.Value(screenHeight)
+    top: new Animated.Value(screenHeight),
   }
-
+  
   componentDidMount() {
     this.toggleMenu();
   }
@@ -79,8 +79,8 @@ class Menu extends React.Component {
       <AnimatedContainer style={{ top: this.state.top }}>
         <Cover>
           <Image source={require('../assets/background2.jpg')} />
-          <Title>Lulu</Title>
-          <Subtitle>lulu@gmail.com</Subtitle>
+          <Title>{this.props.name}</Title>
+          <Subtitle>test@test.com</Subtitle>
 
         </Cover>
         <TouchableOpacity onPress={this.props.closeMenu} style={{ position: 'absolute', top: 120, left: '50%', marginLeft: -22, zIndex: 1 }}>
@@ -179,8 +179,8 @@ const items = [
   },
   {
     icon: 'ios-compass',
-    title: 'Learn React',
-    text: 'start course'
+    title: 'Library',
+    text: 'my favorites'
   },
   {
     icon: 'ios-exit',
