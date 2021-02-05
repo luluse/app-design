@@ -3,7 +3,7 @@
 <p align="center">
 
   <video width="320" autoplay loop>
-  <source src="assets/appvideo.mp4" type="video/mp4">
+  <source src="assets/videoapp.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
   
