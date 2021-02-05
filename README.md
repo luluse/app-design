@@ -5,7 +5,7 @@
 # Genuine Drink
 
 
-<img alt="Video Genuine Drink" src="./assets/gd-gif.gif" width="200" />
+<img alt="Video Genuine Drink" src="./assets/gd-gif.gif" width="250" />
 
 ## React Native App using the following libraries:
 
