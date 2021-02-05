@@ -179,8 +179,8 @@ const items = [
   },
   {
     icon: 'ios-compass',
-    title: 'Learn React',
-    text: 'start course'
+    title: 'Library',
+    text: 'my favorites'
   },
   {
     icon: 'ios-exit',

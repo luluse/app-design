@@ -6,6 +6,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { URI_CONTENTFUL, BEARER_KEY } from '@env';
 
+console.disableYellowBox = true;
 
 const client = new ApolloClient({
   uri: `${URI_CONTENTFUL}`,
