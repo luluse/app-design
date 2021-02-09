@@ -1,16 +1,13 @@
-# Genuine Drink
-
 <p align="center">
-
-  <video width="320" autoplay loop>
-  <source src="assets/videoapp.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-  
+  <img alt="hirondelle" src="./assets/logo-react.png" width="60" />
 </p>
 
+# Genuine Drink
 
-React Native App using the following libraries
+
+<img alt="Video Genuine Drink" src="./assets/gd-gif.gif" width="250" />
+
+## React Native App using the following libraries:
 
 - Styled Components
 - Expo
