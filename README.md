@@ -12,6 +12,7 @@
 - Styled Components
 - Expo
 - Redux
+- GraphQL
 - Apollo
 - Contentful
 - LottieFiles designs
