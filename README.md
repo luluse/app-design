@@ -56,5 +56,4 @@ A user can create an account and login and have a news feed of most recent news.
 
 ### Non-Functional Requirements
 - Security: FireBase allows the user to create and log in to secure account. 
-
 - User Interface: The UI and UX allow the user to enjoy a smooth experience with surfing the app. 
